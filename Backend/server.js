@@ -45,6 +45,14 @@ const budgetRoute = require("./routes/budgetRoutes");
 const transactionRoutes = require("./routes/transactionRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 
+/* Health Check Routes */
+server.get("/", (req, res) => {
+  res.status(200).json({ message: "Expense Tracker API is running smoothly!" });
+});
+server.get("/api", (req, res) => {
+  res.status(200).json({ message: "Welcome to Expense Tracker API!" });
+});
+
 /* Routes */
 server.use("/api/auth", authRoutes);
 // server.use("/analytics", analyticsRoutes);
