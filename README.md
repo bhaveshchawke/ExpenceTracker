@@ -3,7 +3,7 @@
 KharchaPani is a full-stack, responsive web application designed to help you track your personal finances, manage monthly budgets, and analyze your spending habits with ease.
 
 ## 🚀 Live Demo
-**[Insert your Vercel Link here]** (e.g., https://kharchapani.vercel.app)
+**[https://kharchapani-app.vercel.app/](https://kharchapani-app.vercel.app/)**
 
 ---
 
@@ -73,14 +73,7 @@ Run the frontend server:
 npm run dev
 ```
 
----
 
-## 📸 Screenshots
-*(Add your screenshots here! You can drag and drop images directly into GitHub's editor when editing this file online.)*
-
-1. **Dashboard Overview** - Visualizing monthly budgets and cash flow.
-2. **Transaction Logging** - Quick and easy expense entry.
-3. **Mobile View** - Seamless experience on smaller screens.
 
 ---
 
