@@ -60,7 +60,7 @@ export const AdminDashboard = () => {
           </h1>
           <p className="text-gray-500 mt-2">Platform Overview & Statistics</p>
         </div>
-        <div className="px-4 py-2 bg-amber-100 text-amber-700 rounded-lg font-bold text-sm tracking-wide uppercase">
+        <div className="w-fit px-4 py-2 bg-amber-100 text-amber-700 rounded-lg font-bold text-sm tracking-wide uppercase">
           Admin Mode
         </div>
       </header>

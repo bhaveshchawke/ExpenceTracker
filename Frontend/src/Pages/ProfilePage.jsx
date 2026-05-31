@@ -53,7 +53,7 @@ export const ProfilePage = () => {
         <p className="text-gray-500 mt-2">Manage your account details and preferences.</p>
       </header>
 
-      <section className="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 max-w-2xl mx-auto">
+      <section className="bg-white border border-gray-200 rounded-2xl shadow-sm p-5 sm:p-8 max-w-2xl mx-auto">
         <div className="flex flex-col items-center mb-8">
           <div className="w-24 h-24 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 mb-4 shadow-inner">
             <FaUserCircle className="text-6xl" />
@@ -99,7 +99,7 @@ export const ProfilePage = () => {
           </div>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-gray-100 flex justify-end gap-3">
+        <div className="mt-8 pt-6 border-t border-gray-100 flex flex-col sm:flex-row justify-end gap-3">
           {isEditing ? (
             <>
               <button
@@ -107,14 +107,14 @@ export const ProfilePage = () => {
                   setIsEditing(false);
                   setEditName(user.userName);
                 }}
-                className="px-5 py-2.5 bg-white text-gray-600 font-medium rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors shadow-sm flex items-center gap-2"
+                className="w-full sm:w-auto justify-center px-5 py-2.5 bg-white text-gray-600 font-medium rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors shadow-sm flex items-center gap-2"
               >
                 <FiX /> Cancel
               </button>
               <button
                 onClick={handleSave}
                 disabled={isSaving}
-                className="px-5 py-2.5 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors shadow-sm flex items-center gap-2 disabled:opacity-70"
+                className="w-full sm:w-auto justify-center px-5 py-2.5 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors shadow-sm flex items-center gap-2 disabled:opacity-70"
               >
                 <FiCheck /> {isSaving ? "Saving..." : "Save Changes"}
               </button>
@@ -122,7 +122,7 @@ export const ProfilePage = () => {
           ) : (
             <button 
               onClick={() => setIsEditing(true)}
-              className="px-5 py-2.5 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors shadow-sm"
+              className="w-full sm:w-auto justify-center px-5 py-2.5 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors shadow-sm flex items-center gap-2"
             >
               Edit Profile
             </button>
