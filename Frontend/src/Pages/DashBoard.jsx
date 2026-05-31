@@ -323,6 +323,36 @@ export const DashBoard = () => {
           </div>
         )}
       </section>
+
+      {/* SECTION 4: How to Use & Purpose */}
+      <section className="bg-white border border-gray-200 rounded-xl shadow-sm p-5 sm:p-8">
+        <div className="mb-6 border-b border-gray-100 pb-4">
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900 tracking-tight">
+            How to Use KharchaPani
+          </h2>
+          <p className="text-sm text-gray-500 mt-1">
+            Your personal finance companion. Follow these simple steps to master your money.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          <div className="flex flex-col gap-3 p-4 rounded-xl bg-gray-50/50 border border-gray-100 hover:border-indigo-200 transition-colors">
+            <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-700 font-bold text-lg shadow-sm">1</div>
+            <h3 className="font-semibold text-gray-900 text-base">Set Budgets</h3>
+            <p className="text-sm text-gray-600 leading-relaxed">Go to <b>Manage Categories</b> to create groups like Food, Rent, or Travel. Assign a monthly spending limit to each category so you never overspend.</p>
+          </div>
+          <div className="flex flex-col gap-3 p-4 rounded-xl bg-gray-50/50 border border-gray-100 hover:border-rose-200 transition-colors">
+            <div className="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center text-rose-700 font-bold text-lg shadow-sm">2</div>
+            <h3 className="font-semibold text-gray-900 text-base">Log Expenses</h3>
+            <p className="text-sm text-gray-600 leading-relaxed">Whenever you spend money, add a transaction. Select the relevant category and enter the amount. This deducts from your monthly budget.</p>
+          </div>
+          <div className="flex flex-col gap-3 p-4 rounded-xl bg-gray-50/50 border border-gray-100 hover:border-emerald-200 transition-colors">
+            <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-lg shadow-sm">3</div>
+            <h3 className="font-semibold text-gray-900 text-base">Track Progress</h3>
+            <p className="text-sm text-gray-600 leading-relaxed">Use the <b>Reports</b> and <b>Dashboard</b> charts to see where your money goes. Stay in the green, track your limits, and save more!</p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
