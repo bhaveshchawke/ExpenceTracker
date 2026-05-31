@@ -82,4 +82,4 @@ Contributions, issues, and feature requests are welcome!
 
 ## 🧑‍💻 Developed By
 **Bhavesh Chawke**  
-[LinkedIn](Your LinkedIn Profile URL) | [GitHub](https://github.com/bhaveshchawke)
+[LinkedIn](https://www.linkedin.com/in/bhavesh-chawke-607785317/) | [GitHub](https://github.com/bhaveshchawke)
