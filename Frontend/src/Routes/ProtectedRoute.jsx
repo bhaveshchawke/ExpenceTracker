@@ -18,10 +18,8 @@ export const ProtectedRoute = ({ children }) => {
   // Jab tak backend se data aa raha hai, tab tak wait karo (Redirect mat karo)
   if (loading) {
     return (
-      <div
-        style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}
-      >
-        Loading...
+      <div className="w-full h-[80vh] flex items-center justify-center">
+        <div className="w-12 h-12 border-4 border-indigo-100 border-t-indigo-600 rounded-full animate-spin"></div>
       </div>
     );
   }

@@ -9,20 +9,10 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-// डमी डेटा
-const data = [
-  { name: "Jan", Income: 40000, Expense: 24000 },
-  { name: "Feb", Income: 30000, Expense: 13980 },
-  { name: "Mar", Income: 20000, Expense: 9800 },
-  { name: "Apr", Income: 27800, Expense: 3908 },
-  { name: "May", Income: 18900, Expense: 4800 },
-  { name: "Jun", Income: 23900, Expense: 3800 },
-];
-
-export const IncomeExpenseChart = () => {
+export const IncomeExpenseChart = ({ data = [] }) => {
   return (
-    <div className="w-full h-80 bg-white p-6 border border-gray-200 rounded-xl shadow-sm flex flex-col">
-      <h2 className="text-lg font-bold text-gray-900 mb-6">
+    <div className="w-full h-72 bg-white p-5 border border-gray-200 rounded-xl shadow-sm flex flex-col">
+      <h2 className="text-base font-semibold text-gray-900 mb-4">
         Cash Flow (Last 6 Months)
       </h2>
 

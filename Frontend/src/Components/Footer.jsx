@@ -1,4 +1,5 @@
 import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
@@ -25,28 +26,28 @@ export const Footer = () => {
             </h3>
             <ul className="mt-4 space-y-3">
               <li>
-                <a
-                  href="/"
+                <Link
+                  to="/"
                   className="text-sm text-gray-500 transition-colors hover:text-indigo-600"
                 >
                   Dashboard
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/transactions"
+                <Link
+                  to="/transactions"
                   className="text-sm text-gray-500 transition-colors hover:text-indigo-600"
                 >
                   Transactions
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/budgets"
+                <Link
+                  to="/budgets"
                   className="text-sm text-gray-500 transition-colors hover:text-indigo-600"
                 >
                   Budgets
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -61,19 +62,25 @@ export const Footer = () => {
             </p>
             <div className="flex items-center gap-4">
               <a
-                href="#"
+                href="https://github.com/bhaveshchawke"
+                target="_blank" 
+                rel="noopener noreferrer"
                 className="p-2 text-gray-400 transition-colors bg-gray-50 rounded-full hover:bg-indigo-50 hover:text-indigo-600"
               >
                 <FaGithub className="text-lg" />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/bhavesh-chawke-607785317/"
+                target="_blank" 
+                rel="noopener noreferrer"
                 className="p-2 text-gray-400 transition-colors bg-gray-50 rounded-full hover:bg-indigo-50 hover:text-indigo-600"
               >
                 <FaLinkedin className="text-lg" />
               </a>
               <a
-                href="#"
+                href="https://x.com/ChawkeBhav95138"
+                target="_blank" 
+                rel="noopener noreferrer"
                 className="p-2 text-gray-400 transition-colors bg-gray-50 rounded-full hover:bg-indigo-50 hover:text-indigo-600"
               >
                 <FaXTwitter className="text-lg" />

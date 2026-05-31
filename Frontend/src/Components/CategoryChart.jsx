@@ -7,22 +7,12 @@ import {
   Legend,
 } from "recharts";
 
-// डमी डेटा
-const data = [
-  { name: "Food & Dining", value: 4000 },
-  { name: "Transportation", value: 3000 },
-  { name: "Shopping", value: 3000 },
-  { name: "Entertainment", value: 2000 },
-  { name: "Bills & Utils", value: 2780 },
-];
+const COLORS = ["#4F46E5", "#10B981", "#F59E0B", "#EF4444", "#8B5CF6", "#EC4899", "#3B82F6"];
 
-// चार्ट के स्लाइस के लिए कलर्स
-const COLORS = ["#4F46E5", "#10B981", "#F59E0B", "#EF4444", "#8B5CF6"];
-
-export const CategoryChart = () => {
+export const CategoryChart = ({ data = [] }) => {
   return (
-    <div className="w-full h-80 bg-white p-6 border border-gray-200 rounded-xl shadow-sm flex flex-col">
-      <h2 className="text-lg font-bold text-gray-900 mb-2">
+    <div className="w-full h-72 bg-white p-5 border border-gray-200 rounded-xl shadow-sm flex flex-col">
+      <h2 className="text-base font-semibold text-gray-900 mb-2">
         Expenses by Category
       </h2>
 

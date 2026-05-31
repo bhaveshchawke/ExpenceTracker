@@ -9,7 +9,6 @@ import {
   FiSmartphone,
   FiArrowLeft,
 } from "react-icons/fi";
-import { FcGoogle } from "react-icons/fc";
 import { sendUserData } from "../Services/AuthServices";
 import { sendOTP } from "../Services/AuthServices";
 export const Register = () => {
@@ -162,6 +161,7 @@ export const Register = () => {
                   </div>
                   <input
                     required
+                    minLength={6}
                     type="password"
                     name="password"
                     value={userData.password}
@@ -255,28 +255,6 @@ export const Register = () => {
                   className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-900"
                 >
                   <FiArrowLeft /> Back to details
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* Social Sign up (सिर्फ Step 1 पर दिखेगा) */}
-          {step === 1 && (
-            <div className="mt-6">
-              <div className="relative">
-                <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-gray-200" />
-                </div>
-                <div className="relative flex justify-center text-sm">
-                  <span className="px-2 bg-white text-gray-500">
-                    Or sign up with
-                  </span>
-                </div>
-              </div>
-              <div className="mt-6">
-                <button className="w-full flex justify-center items-center gap-2 py-2.5 px-4 border border-gray-300 rounded-lg shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
-                  <FcGoogle className="text-xl" />
-                  Google
                 </button>
               </div>
             </div>

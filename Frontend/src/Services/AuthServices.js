@@ -54,3 +54,15 @@ export const logoutService = async () => {
   const response = await axios.post(`${backendUrl}/auth/logout`);
   return response.data;
 };
+
+//update profile
+export const updateProfileService = async (fullName) => {
+  try {
+    const response = await axios.put(`${backendUrl}/auth/update-profile`, {
+      fullName,
+    });
+    return response.data;
+  } catch (error) {
+    throw error.response?.data?.error || error.message;
+  }
+};

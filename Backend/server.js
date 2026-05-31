@@ -7,6 +7,13 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo").default || require("connect-mongo");
 /* Middleware */
 dotenv.config();
+
+// Trust proxy is required for Vercel/Render to set secure cookies properly
+server.set("trust proxy", 1);
+
+// Connect to DB globally for Vercel serverless functions
+connectDB();
+
 server.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -19,7 +26,8 @@ server.use(
     cookie: {
       maxAge: 1000 * 60 * 60 * 24, // 1 दिन (24 घंटे)
       httpOnly: true,
-      secure: false,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     },
   }),
 );
@@ -33,16 +41,22 @@ server.use(
 /* Routes Import */
 const authRoutes = require("./routes/authRoutes");
 // const analyticsRoutes = require("./routes/analyticsRoutes");
-// const budgetRoutes = require("./routes/budgetRoutes");
-// const transactionRoutes = require("./routes/transactionRoutes");
+const budgetRoute = require("./routes/budgetRoutes");
+const transactionRoutes = require("./routes/transactionRoutes");
+const adminRoutes = require("./routes/adminRoutes");
 
 /* Routes */
 server.use("/api/auth", authRoutes);
 // server.use("/analytics", analyticsRoutes);
-// server.use("/budget", budgetRoutes);
-// server.use("/transaction", transactionRoutes);
+server.use("/api/budget", budgetRoute);
+server.use("/api/transactions", transactionRoutes);
+server.use("/api/admin", adminRoutes);
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, async () => {
-  await connectDB();
-  console.log(`server is listning on port:${PORT}`);
-});
+if (process.env.NODE_ENV !== "production") {
+  server.listen(PORT, () => {
+    console.log(`server is listning on port:${PORT}`);
+  });
+}
+
+// Export for Vercel Serverless
+module.exports = server;

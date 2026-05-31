@@ -8,7 +8,7 @@ import { logoutService } from "../Services/AuthServices";
 import { UseMessage } from "../Hooks/UseMessage";
 export const NavBar = () => {
   const [isOpenMenu, setOpenMenu] = useState(false);
-  const { isLoggedIn, user, setIsLoggedIn, setUser } = UseAuthData();
+  const { isLoggedIn, user, setIsLoggedIn, setUser, loading } = UseAuthData();
   const { showMessage } = UseMessage();
   //logout function
   const handleLogout = async () => {
@@ -51,16 +51,20 @@ export const NavBar = () => {
 
         {/* Right Section */}
         <div className="flex items-center gap-2 sm:gap-4">
-          <button className="p-2 text-gray-500 transition-colors rounded-full hover:bg-gray-100 hover:text-gray-900">
+          {/* <button className="p-2 text-gray-500 transition-colors rounded-full hover:bg-gray-100 hover:text-gray-900">
             <FaRegMoon className="text-lg" />
-          </button>
+          </button> */}
 
-          <button className="p-2 text-gray-500 transition-colors rounded-full hover:bg-gray-100 hover:text-gray-900">
-            <FaCircleUser className="text-lg" />
-          </button>
+          <NavLink to="/profile">
+            <button className="p-2 text-gray-500 transition-colors rounded-full hover:bg-gray-100 hover:text-gray-900" title="My Profile">
+              <FaCircleUser className="text-lg" />
+            </button>
+          </NavLink>
 
           {/* Solid Indigo Login Button */}
-          {isLoggedIn ? (
+          {loading ? (
+            <div className="w-24 h-10 animate-pulse bg-gray-200 rounded-md hidden md:block"></div>
+          ) : isLoggedIn ? (
             // Agar login hai toh LOGOUT dikhao
             <button
               onClick={handleLogout}
@@ -77,7 +81,9 @@ export const NavBar = () => {
             </NavLink>
           )}
           {/* Mobile Login / Logout */}
-          {isLoggedIn ? (
+          {loading ? (
+            <div className="w-10 h-10 animate-pulse bg-gray-200 rounded-full md:hidden"></div>
+          ) : isLoggedIn ? (
             <button
               onClick={handleLogout}
               className="p-2 text-red-600 transition-colors rounded-full md:hidden hover:bg-red-50"
@@ -111,8 +117,14 @@ export const NavBar = () => {
         <div className="flex flex-col px-3 space-y-1 mt-4">
           <SidebarItem text="Dashboard" path={"/"} />
           <SidebarItem text="Transactions" path={"/transactions"} />
-          <SidebarItem text="Budgets" path={"/budgests"} />
+          <SidebarItem text="Budgets" path={"/budgets"} />
           <SidebarItem text="Reports & Analytics" path={"/reports"} />
+          {user?.isAdmin && (
+            <>
+              <div className="my-2 border-t border-gray-100"></div>
+              <SidebarItem text="Admin Dashboard" path={"/admin-dashboard"} />
+            </>
+          )}
         </div>
 
         <div className="mt-auto p-4 border-t border-gray-200 text-xs text-center text-gray-500 font-medium">

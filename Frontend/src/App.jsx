@@ -4,9 +4,12 @@ import { DashBoard } from "./Pages/DashBoard";
 import { TransactionPage } from "./Pages/TransactionPage";
 import { BudgetPage } from "./Pages/BudgetPage";
 import { ReportsPage } from "./Pages/ReportsPage";
-import { AddTranscationsPage } from "./Pages/AddTranscationsPage";
+import { ManageCategories } from "./Pages/ManageCategories";
 import { Register } from "./Pages/Register";
 import { Login } from "./Pages/Login";
+import { ForgotPassword } from "./Pages/ForgotPassword";
+import { ProfilePage } from "./Pages/ProfilePage";
+import { AdminDashboard } from "./Pages/AdminDashboard";
 import { ProtectedRoute } from "./Routes/ProtectedRoute";
 
 const router = createBrowserRouter([
@@ -27,7 +30,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/budgests",
+        path: "/budgets",
         element: (
           <ProtectedRoute>
             <BudgetPage />
@@ -42,11 +45,12 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+
       {
-        path: "/addtransactions",
+        path: "/setbudget",
         element: (
           <ProtectedRoute>
-            <AddTranscationsPage />
+            <ManageCategories />
           </ProtectedRoute>
         ),
       },
@@ -57,6 +61,26 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/forgot-password",
+        element: <ForgotPassword />,
+      },
+      {
+        path: "/profile",
+        element: (
+          <ProtectedRoute>
+            <ProfilePage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/admin-dashboard",
+        element: (
+          <ProtectedRoute>
+            <AdminDashboard />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
