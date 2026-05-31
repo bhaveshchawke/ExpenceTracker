@@ -67,7 +67,7 @@ export const ProfilePage = () => {
               autoFocus
             />
           ) : (
-            <h2 className="text-2xl font-bold text-gray-900">{user.userName}</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 break-words text-center px-2">{user.userName}</h2>
           )}
           
           {user.isAdmin && (
@@ -77,24 +77,24 @@ export const ProfilePage = () => {
           )}
         </div>
 
-        <div className="space-y-6">
-          <div className="flex items-center p-4 bg-gray-50 rounded-xl border border-gray-100">
-            <div className="p-3 bg-white rounded-full text-indigo-500 shadow-sm mr-4">
-              <FiMail className="text-xl" />
+        <div className="space-y-4 sm:space-y-6">
+          <div className="flex items-center p-3 sm:p-4 bg-gray-50 rounded-xl border border-gray-100">
+            <div className="p-2 sm:p-3 bg-white rounded-full text-indigo-500 shadow-sm mr-3 sm:mr-4 flex-shrink-0">
+              <FiMail className="text-lg sm:text-xl" />
             </div>
-            <div>
+            <div className="min-w-0">
               <p className="text-xs font-semibold text-gray-500 uppercase">Email Address</p>
-              <p className="text-base font-medium text-gray-900">{user.userEmail}</p>
+              <p className="text-sm sm:text-base font-medium text-gray-900 truncate">{user.userEmail}</p>
             </div>
           </div>
 
-          <div className="flex items-center p-4 bg-gray-50 rounded-xl border border-gray-100">
-            <div className="p-3 bg-white rounded-full text-indigo-500 shadow-sm mr-4">
-              <FiPhone className="text-xl" />
+          <div className="flex items-center p-3 sm:p-4 bg-gray-50 rounded-xl border border-gray-100">
+            <div className="p-2 sm:p-3 bg-white rounded-full text-indigo-500 shadow-sm mr-3 sm:mr-4 flex-shrink-0">
+              <FiPhone className="text-lg sm:text-xl" />
             </div>
-            <div>
+            <div className="min-w-0">
               <p className="text-xs font-semibold text-gray-500 uppercase">Phone Number</p>
-              <p className="text-base font-medium text-gray-900">{user.phone || "Not Provided"}</p>
+              <p className="text-sm sm:text-base font-medium text-gray-900 truncate">{user.phone || "Not Provided"}</p>
             </div>
           </div>
         </div>
