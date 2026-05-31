@@ -159,43 +159,68 @@ export const TransactionPage = () => {
           {processedTransactions?.map((txn) => (
             <div
               key={txn._id}
-              className="grid grid-cols-1 sm:grid-cols-12 gap-4 px-6 py-4 items-center hover:bg-gray-50/50 transition-colors"
+              className="flex flex-col sm:grid sm:grid-cols-12 gap-3 sm:gap-4 px-4 sm:px-6 py-4 items-start sm:items-center hover:bg-gray-50/50 transition-colors"
             >
-              {/* Title & Date & Icon */}
-              <div className="col-span-5 flex items-center gap-4">
-                <div className="p-2.5 rounded-full bg-rose-100 text-rose-600">
-                  <FiArrowDownRight className="text-lg" />
+              {/* Title & Date & Icon & Mobile Amount */}
+              <div className="w-full sm:col-span-5 flex justify-between sm:justify-start items-center gap-4">
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <div className="p-2 sm:p-2.5 rounded-full bg-rose-100 text-rose-600">
+                    <FiArrowDownRight className="text-base sm:text-lg" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-semibold text-gray-900 line-clamp-1">
+                      {txn.note || "Expense"}
+                    </h3>
+                    <p className="text-xs text-gray-500 mt-0.5">
+                      {new Date(txn.date).toLocaleDateString("en-IN", {
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                      })}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-sm font-semibold text-gray-900">
-                    {txn.note || "Expense"}
-                  </h3>
-                  <p className="text-xs text-gray-500 mt-0.5">
-                    {new Date(txn.date).toLocaleDateString("en-IN", {
-                      day: "numeric",
-                      month: "short",
-                      year: "numeric",
-                    })}
-                  </p>
+                {/* Mobile Amount */}
+                <div className="sm:hidden text-sm font-bold text-gray-900">
+                  -₹{Number(txn.amount || 0).toLocaleString("en-IN")}
                 </div>
               </div>
 
-              {/* Category Badge */}
-              <div className="col-span-3 hidden sm:block">
+              {/* Category Badge & Mobile Actions */}
+              <div className="w-full sm:col-span-3 flex items-center justify-between sm:justify-start mt-1 sm:mt-0">
                 <span className="px-2.5 py-1 text-xs font-medium text-gray-600 bg-gray-100 rounded-md flex items-center gap-1.5 w-fit">
                   {txn.category?.icon} {txn.category?.title || "Unknown"}
                 </span>
+                
+                {/* Mobile Actions */}
+                <div className="sm:hidden flex gap-2">
+                  <button
+                    onClick={() => {
+                      setEditingTransaction(txn);
+                      setIsOpen(true);
+                    }}
+                    className="p-1.5 text-indigo-400 rounded-md hover:text-indigo-600 hover:bg-indigo-50 transition-colors"
+                  >
+                    <FiEdit2 className="text-base" />
+                  </button>
+                  <button
+                    onClick={() => handleDelete(txn._id)}
+                    className="p-1.5 text-rose-400 rounded-md hover:text-rose-600 hover:bg-rose-50 transition-colors"
+                  >
+                    <FiTrash2 className="text-base" />
+                  </button>
+                </div>
               </div>
 
-              {/* Amount */}
-              <div className="col-span-2 text-right">
+              {/* Desktop Amount */}
+              <div className="hidden sm:block sm:col-span-2 text-right">
                 <span className="text-sm font-bold text-gray-900">
                   -₹{Number(txn.amount || 0).toLocaleString("en-IN")}
                 </span>
               </div>
 
-              {/* Action Menu */}
-              <div className="col-span-2 flex justify-end gap-2">
+              {/* Desktop Action Menu */}
+              <div className="hidden sm:flex sm:col-span-2 justify-end gap-2">
                 <button
                   onClick={() => {
                     setEditingTransaction(txn);

@@ -128,7 +128,7 @@ export const CreateCatagory = ({ setIsOpen, editingCategory, onSuccess }) => {
               <label className="flex items-center gap-2 text-sm font-semibold text-gray-700">
                 Choose an Icon
               </label>
-              <div className="grid grid-cols-6 gap-2">
+              <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
                 {icons.map((icon, index) => (
                   <button
                     key={index}

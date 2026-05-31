@@ -115,14 +115,14 @@ export const NavBar = () => {
         }`}
       >
         <div className="flex flex-col px-3 space-y-1 mt-4">
-          <SidebarItem text="Dashboard" path={"/"} />
-          <SidebarItem text="Transactions" path={"/transactions"} />
-          <SidebarItem text="Budgets" path={"/budgets"} />
-          <SidebarItem text="Reports & Analytics" path={"/reports"} />
+          <SidebarItem text="Dashboard" path={"/"} onClick={() => setOpenMenu(false)} />
+          <SidebarItem text="Transactions" path={"/transactions"} onClick={() => setOpenMenu(false)} />
+          <SidebarItem text="Budgets" path={"/budgets"} onClick={() => setOpenMenu(false)} />
+          <SidebarItem text="Reports & Analytics" path={"/reports"} onClick={() => setOpenMenu(false)} />
           {user?.isAdmin && (
             <>
               <div className="my-2 border-t border-gray-100"></div>
-              <SidebarItem text="Admin Dashboard" path={"/admin-dashboard"} />
+              <SidebarItem text="Admin Dashboard" path={"/admin-dashboard"} onClick={() => setOpenMenu(false)} />
             </>
           )}
         </div>
@@ -136,9 +136,10 @@ export const NavBar = () => {
 };
 
 // Sidebar Item - Active state highlighted with soft Indigo
-const SidebarItem = ({ text, path }) => (
+const SidebarItem = ({ text, path, onClick }) => (
   <NavLink
     to={path}
+    onClick={onClick}
     // यहाँ NavLink हमें खुद बताता है कि यह लिंक एक्टिव है या नहीं
     className={({ isActive }) =>
       `block px-4 py-2.5 text-sm font-medium transition-all rounded-md ${

@@ -1,14 +1,13 @@
 import { FiPlus } from "react-icons/fi";
 import { ExpenceProgressCard } from "../Components/ExpenceProgressCard";
-import { getAllExpenses } from "../Services/TransactionServices";
-import { getAllBudgetCards } from "../Services/TransactionServices";
+import { getAllExpenses, getAllBudgetCard } from "../Services/TransactionServices";
 import { useEffect, useState } from "react";
 export const BudgetPage = () => {
   const [budgetData, setBudgetData] = useState([]);
   const calculateProgress = (categories, transactions) => {
     const mergedData = categories.map((cat) => {
       const categoryTxns = transactions.filter(
-        (txn) => cat.title === txn.title,
+        (txn) => String(cat._id) === String(txn.category?._id) || cat.title === txn.category?.title,
       );
       const totalSpent = categoryTxns.reduce((acc, curr) => {
         return acc + Number(curr.amount || 0);
@@ -32,7 +31,7 @@ export const BudgetPage = () => {
       try {
         const [transactionsRes, categoriesRes] = await Promise.all([
           getAllExpenses(),
-          getAllBudgetCards(),
+          getAllBudgetCard(),
         ]);
         const categories = categoriesRes.data || [];
         const transactions = transactionsRes.data || [];

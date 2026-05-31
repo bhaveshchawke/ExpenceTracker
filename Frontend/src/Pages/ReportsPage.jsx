@@ -46,7 +46,7 @@ export const ReportsPage = () => {
     // 5. Top Spending Categories logic
     const categoryTotals = {};
     expenses.forEach((ex) => {
-      const catName = ex.title || "Other"; 
+      const catName = ex.category?.title || "Other"; 
       categoryTotals[catName] = (categoryTotals[catName] || 0) + Number(ex.amount || 0);
     });
 
