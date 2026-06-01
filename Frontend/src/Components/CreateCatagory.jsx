@@ -20,6 +20,7 @@ export const CreateCatagory = ({ setIsOpen, editingCategory, onSuccess }) => {
     "👕",
     "☕",
   ];
+  const [data, setData] = useState({
     title: editingCategory ? editingCategory.title : "",
     limit: editingCategory ? editingCategory.limit : "",
     icon: editingCategory ? editingCategory.icon : "🍔",
