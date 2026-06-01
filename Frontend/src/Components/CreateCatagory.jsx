@@ -6,7 +6,6 @@ import { useEffect } from "react";
 import { editCategry } from "../Services/TransactionServices";
 export const CreateCatagory = ({ setIsOpen, editingCategory, onSuccess }) => {
   const { showMessage } = UseMessage();
-  const [selectedIcon, setSelectedIcon] = useState("🍔");
   const icons = [
     "🍔",
     "🚕",
@@ -21,10 +20,9 @@ export const CreateCatagory = ({ setIsOpen, editingCategory, onSuccess }) => {
     "👕",
     "☕",
   ];
-  const [data, setData] = useState({
     title: editingCategory ? editingCategory.title : "",
     limit: editingCategory ? editingCategory.limit : "",
-    icon: editingCategory ? editingCategory.icon : selectedIcon,
+    icon: editingCategory ? editingCategory.icon : "🍔",
   });
   const handleData = (e) => {
     let name = e.target.name;
@@ -43,7 +41,6 @@ export const CreateCatagory = ({ setIsOpen, editingCategory, onSuccess }) => {
         limit: editingCategory.limit,
         icon: editingCategory.icon,
       });
-      setSelectedIcon(editingCategory.icon);
     }
   }, [editingCategory]);
   const handleCreate = async (e) => {
@@ -132,9 +129,10 @@ export const CreateCatagory = ({ setIsOpen, editingCategory, onSuccess }) => {
                 {icons.map((icon, index) => (
                   <button
                     key={index}
-                    onClick={() => setSelectedIcon(icon)}
+                    type="button"
+                    onClick={() => setData(prev => ({ ...prev, icon: icon }))}
                     className={`w-10 h-10 flex items-center justify-center text-xl rounded-xl transition-all duration-300 ${
-                      selectedIcon === icon
+                      data.icon === icon
                         ? "bg-indigo-100 border-2 border-indigo-500 shadow-sm scale-110"
                         : "bg-gray-50 border border-gray-100 hover:bg-gray-100 hover:scale-105"
                     }`}
